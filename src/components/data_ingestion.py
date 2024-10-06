@@ -25,7 +25,8 @@ class DataIngestion:
             logging.info("Read the dataset as dataframe")
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
-
+            '''os.path.dirname(path) => returns the directory of the path, in this case "artifacts"'''
+            
             df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
 
             logging.info("Train test split initiated")
@@ -44,7 +45,7 @@ class DataIngestion:
             )
         except Exception as e:
             CustomException(e,sys)
-    
+
 if __name__ == "__main__":
     obj = DataIngestion()
     obj.initiate_data_ingestion()
